@@ -41,5 +41,48 @@ public class motor {
         LCD.drawString("Reached halfway,",0, 0);
         LCD.drawString("returing to base",0, 0);
         Delay.msDelay(3000);
-        
-}
+
+
+        //Turn robot so it faces back to base using rotateTo()
+        leftMotor.resetTachoCount();
+        rightMotor.resetTachoCount();
+
+        leftMotor.setspeed(200);
+        rightMotor.setspeed(200);
+
+
+        leftMotor.rotateTo(360,true);  //about 180- degree turn 
+        rightMotor.rotateTo(-360);     //adjust if needed for your robot
+
+
+        // stop() = default stop with brake 
+        leftMotor.stop();
+        rightMotor.stop();
+        Delay.msDelay(1000);
+
+        //close regulated motors before opening unregulated motors
+        leftMotor.close();
+        rightMotor.close();
+
+        UnregulatedMotor leftPowerMotor = new UnregulatedMotor(MotorPort.A);
+        UnregulatedMotor rightPowerMotor = new UnregulatedMotor(MotorPort.B);
+
+
+        // return to base using setPower()
+        leftPowerMotor.setPower(30); 
+        rightPowerMotor.setPower(30);
+       
+        leftPowerMotor.forward();
+        rightPowerMotor.forward();
+        Delay.msDelay(10000);
+
+        leftPowerMotor.stop();
+        rightPowerMotor.stop();
+
+        leftPowerMotor.stop();
+        rightPowerMotor.stoop();
+
+        System.out.println("....");
+
+
+    }
