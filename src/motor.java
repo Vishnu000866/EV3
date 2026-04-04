@@ -79,10 +79,14 @@ public class motor {
         leftPowerMotor.stop();
         rightPowerMotor.stop();
 
-        leftPowerMotor.stop();
-        rightPowerMotor.stoop();
+        leftPowerMotor.close();
+        rightPowerMotor.close();
+
+
 
         System.out.println("....");
 
 
     }
+    
+}
