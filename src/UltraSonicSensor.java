@@ -19,16 +19,15 @@ import lejos.utility.Delay;
         EV3LargeRegulatedMotor motorA = new EV3LargeRegulatedMotor(MotorPort.A);
         EV3LargeRegulatedMotor motorB = new EV3LargeRegulatedMotor(MotorPort.B);
 
-        int speed = 250;
+        int fastspeed = 300;
+        int slowspeed = 120;
+
+        float slowDistance = 0.40f;
+        float stopDistance = 0.20f;
 
         LCD.clear();
         LCD.drawString("Press any key", 0, 0);
         Button.waitForAnyPress();
-
-        motorA.setSpeed(speed);
-        motorB.setSpeed(speed);
-        motorA.forward();
-        motorB.forward();
 
         while (!Button.ESCAPE.isDown()) {
             distanceMode.fetchSample(sample, 0);
@@ -38,7 +37,27 @@ import lejos.utility.Delay;
             LCD.drawString("Distance:", 0, 0);
             LCD.drawString((distance * 100) + " cm", 0, 1);
 
-            Delay.msDelay(100);
+            if (distance <= slowDistance && distance > stopDistance) {
+                motorA.setSpeed(slowSpeed);
+                motorB.setSpeed(slowSpeed);
+                motorA.forward();
+                motorB.forward();
+                LCD.drawString("Slow", 0, 3);
+            }
+            else if (distance <= stopDistance) {
+                motorA.stop(true);
+                motorB.stop();
+                LCD.drawString("Stop", 0, 3);
+                break;
+            }
+            else {
+                motorA.setSpeed(fastSpeed);
+                motorB.setSpeed(fastSpeed);
+                motorA.forward();
+                motorB.forward();
+                LCD.drawString("Fast", 0, 3);
+            }
+             Delay.msDelay(100);
         }
 
         motorA.stop(true);
