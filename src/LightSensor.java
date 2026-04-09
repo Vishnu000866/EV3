@@ -17,6 +17,11 @@ public class LightSensor {
         SampleProvider lightMode = sensor.getRedMode();
         float[] sample = new float[lightMode.sampleSize()];
 
+        EV3LargeRegulatedMotor motorA = new EV3LargeRegulatedMotor(MotorPort.A);
+        EV3LargeRegulatedMotor motorB = new EV3LargeRegulatedMotor(MotorPort.B);
+
+        int speed = 180;
+
         LCD.clear();
         LCD.drawString("Press any key", 0, 0);
         Button.waitForAnyPress();
@@ -30,8 +35,19 @@ public class LightSensor {
             LCD.drawString("Light:", 0, 0);
             LCD.drawString(lightValue + " %", 0, 1);
 
-            Delay.msDelay(100);
+            motorA.setSpeed(speed);
+            motorB.setSpeed(speed);
+            motorA.forward();
+            motorB.forward();
+
+            Delay.msDelay(70);
         }
+
+        motorA.stop(true);
+        motorB.stop();
+
+        motorA.close();
+        motorB.close();
 
         sensor.close();
     }
