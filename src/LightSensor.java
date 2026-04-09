@@ -13,14 +13,20 @@ public class LightSensor {
 
      public static void main(String[] args) {
 
+        // light sensor on port S3
         EV3ColorSensor sensor = new EV3ColorSensor(SensorPort.S3);
         SampleProvider lightMode = sensor.getRedMode();
         float[] sample = new float[lightMode.sampleSize()];
 
+        
         EV3LargeRegulatedMotor motorA = new EV3LargeRegulatedMotor(MotorPort.A);
         EV3LargeRegulatedMotor motorB = new EV3LargeRegulatedMotor(MotorPort.B);
 
-        int speed = 180;
+        int forwardSpeed = 180;
+        int turnSpeed = 120;
+
+        // light value limit
+        int threshold = 30;
 
         LCD.clear();
         LCD.drawString("Press any key", 0, 0);
@@ -28,17 +34,32 @@ public class LightSensor {
 
         while (!Button.ESCAPE.isDown()) {
 
+            // read light value
             lightMode.fetchSample(sample, 0);
             int lightValue = (int)(sample[0] * 100);
 
             LCD.clear();
             LCD.drawString("Light:", 0, 0);
             LCD.drawString(lightValue + " %", 0, 1);
-
-            motorA.setSpeed(speed);
-            motorB.setSpeed(speed);
+            
+            // if dark, move forward
+        if (lightValue < threshold) {
+            motorA.setSpeed(forwardSpeed);
+            motorB.setSpeed(forwardSpeed);
             motorA.forward();
             motorB.forward();
+            LCD.drawString("On line", 0, 3);
+        }
+
+        // if bright, turn a little to find line
+
+        else{
+                motorA.setSpeed(turnSpeed);
+                motorB.setSpeed(turnSpeed);
+                motorA.forward();
+                motorB.backward();
+                LCD.drawString("Finding line", 0, 3);
+            }
 
             Delay.msDelay(70);
         }
