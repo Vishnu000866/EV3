@@ -26,7 +26,7 @@ public class LightSensor {
         int turnSpeed = 120;
 
         // light value limit
-        int threshold = 30;
+        int threshold = 35;
 
         LCD.clear();
         LCD.drawString("Press any key", 0, 0);
