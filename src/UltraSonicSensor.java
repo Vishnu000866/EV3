@@ -27,8 +27,8 @@ import lejos.utility.Delay;
         int turnSpeed = 150;
 
         // distances in meters
-        float slowDistance = 0.40f;
-        float stopDistance = 0.20f;
+        float slowDistance = 0.35f;
+        float stopDistance = 0.25f;
 
         // time values
         long startTime;
