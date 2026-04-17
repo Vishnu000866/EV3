@@ -27,7 +27,7 @@ import lejos.utility.Delay;
 
         // distances in meters
         float slowDistance = 0.40f;
-        float stopDistance = 0.20f;
+        float stopDistance = 0.30f;
 
         // time values
         long startTime;
