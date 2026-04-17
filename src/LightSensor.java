@@ -35,7 +35,7 @@ public class LightSensor {
         while (!Button.ESCAPE.isDown()) {
 
             // read light value
-            lightMode.fetchSample(sample, 0);
+            lightMode.fe tchSample(sample, 0);
             int lightValue = (int)(sample[0] * 100);
 
             LCD.clear();
