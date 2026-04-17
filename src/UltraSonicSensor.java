@@ -22,7 +22,7 @@ import lejos.utility.Delay;
 
         // speed values
         int fastSpeed = 300;
-        int slowSpeed = 120;
+        int slowSpeed = 100;
         int turnSpeed = 150;
 
         // distances in meters
@@ -83,7 +83,7 @@ import lejos.utility.Delay;
         }
 
         // calculate how long robot moved forward
-        endTime = System.current TimeMillis();
+        endTime = System.currentTimeMillis();
         travelTime = endTime - startTime;
 
         
