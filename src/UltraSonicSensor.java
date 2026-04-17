@@ -83,7 +83,7 @@ import lejos.utility.Delay;
         }
 
         // calculate how long robot moved forward
-        endTime = System.currentTimeMillis();
+        endTime = System.current TimeMillis();
         travelTime = endTime - startTime;
 
         
