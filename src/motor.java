@@ -52,7 +52,7 @@ public class motor {
 
 
         leftMotor.rotateTo(360,true);  //about 180- degree turn 
-        rightMotor.rotateTo(-360);     //adjust if needed for your robot
+        rightMotor.rotateTo(-270);     //adjust if needed for your robot
 
 
         // stop() = default stop with brake 
