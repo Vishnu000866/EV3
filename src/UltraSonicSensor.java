@@ -96,7 +96,7 @@ import lejos.utility.Delay;
         motorA.forward();
         motorB.backward();
 
-        Delay.msDelay(1100);
+        Delay.msDelay(110);
 
         motorA.stop(true);
         motorB.stop();
