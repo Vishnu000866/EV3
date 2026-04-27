@@ -62,7 +62,7 @@ public class LineFollower implements Runnable {
             leftSpeed = limit(leftSpeed, minMotorSpeed, maxMotorSpeed);
             rightSpeed = limit(rightSpeed, minMotorSpeed, maxMotorSpeed);
 
-            leftSpeed = smoothSpeed(lastLeftSpeed, leftSpeed, 20);
+            leftSpeed = smoothSpeed(lastLeftSpeed, leftSpeed,20);
             rightSpeed = smoothSpeed(lastRightSpeed, rightSpeed,20);
 
             lastLeftSpeed = leftSpeed;

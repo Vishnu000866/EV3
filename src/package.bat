@@ -1,1 +1,1 @@
-"C:\Program Files\Java\jdk1.7.0_80\bin\jar" -cfe ult.jar UltraSonicSensor -C src .
+"C:\Program Files\Java\jdk1.7.0_80\bin\jar" -cfe tain.jar multisensor.MultiSensorRobot ..\lib\ev3classes.jar .\multisensor
