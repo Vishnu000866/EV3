@@ -57,4 +57,17 @@ public class LineFollower implements Runnable {
 
             leftSpeed = limit(leftSpeed, minMotorSpeed, maxMotorSpeed);
             rightSpeed = limit(rightSpeed, minMotorSpeed, maxMotorSpeed);
-            
+
+            leftSpeed = smoothSpeed(lastLeftSpeed, leftSpeed, 20);
+            rightSpeed = smoothSpeed(lastRightSpeed, rightSpeed, 20);
+
+            lastLeftSpeed = leftSpeed;
+            lastRightSpeed = rightSpeed;
+
+             synchronized (MultiSensorRobot.motorLock) {
+                MultiSensorRobot.leftMotor.setSpeed(leftSpeed);
+                MultiSensorRobot.rightMotor.setSpeed(rightSpeed);
+
+                MultiSensorRobot.leftMotor.forward();
+                MultiSensorRobot.rightMotor.forward();
+            }
