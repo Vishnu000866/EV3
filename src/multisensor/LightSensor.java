@@ -33,6 +33,21 @@ public class LightSensor {
         Delay.msDelay(1500);
 
     }
+     public static float getLightValue() {
+        synchronized (MultiSensorRobot.sensorLock) {
+            lightMode.fetchSample(sample, 0);
+            return sample[0];
+        }
+    }
+
+    public static float getThreshold() {
+        return lightThreshold;
+    }
+
+    public static void shutdown() {
+        colorSensor.close();
+    }
+}
 
 
 
