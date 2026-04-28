@@ -33,6 +33,9 @@ public class LineFollower implements Runnable {
         int lastRightSpeed = normalSpeed;
         int displayCounter = 0;
 
+
+    }
+
         while (!Button.ESCAPE.isDown()) {
 
             if (MultiSensorRobot.avoidObstacle) {
