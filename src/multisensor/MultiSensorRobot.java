@@ -15,7 +15,7 @@ public class MultiSensorRobot {
 
     static volatile boolean avoidObstacle = false;
 
-    public static void main(String[] args) {
+      public static void main(String[] args) {
         LightSensor.calibrate(); // Calibrate the light sensor
 
         LCD.clear();
@@ -48,6 +48,7 @@ public class MultiSensorRobot {
 
     }
      private static float measureSide(boolean leftTurn) {
+    
         synchronized (MultiSensorRobot.motorLock) {
             if (leftTurn) {
                 MultiSensorRobot.leftMotor.setSpeed(100);
