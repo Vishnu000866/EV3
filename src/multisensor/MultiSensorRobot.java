@@ -47,8 +47,8 @@ public class MultiSensorRobot {
         LCD.drawString("Stopped", 0, 0);
 
     }
-     private static float measureSide(boolean leftTurn) {
     
+    private static float measureSide(boolean leftTurn) {
         synchronized (MultiSensorRobot.motorLock) {
             if (leftTurn) {
                 MultiSensorRobot.leftMotor.setSpeed(100);
