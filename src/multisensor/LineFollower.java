@@ -34,7 +34,7 @@ public class LineFollower implements Runnable {
         int displayCounter = 0;
 
 
-    }
+    
 
         while (!Button.ESCAPE.isDown()) {
 
@@ -55,41 +55,6 @@ public class LineFollower implements Runnable {
             int leftSpeed = normalSpeed - adjust;
             int rightSpeed = normalSpeed + adjust;
 
-            /*
-             * If the robot turns away from the line,
-             * swap the two lines above like this:
-             *
-             * int leftSpeed = normalSpeed + adjust;
-             * int rightSpeed = normalSpeed - adjust;
-             */
-
             leftSpeed = limit(leftSpeed, minMotorSpeed, maxMotorSpeed);
             rightSpeed = limit(rightSpeed, minMotorSpeed, maxMotorSpeed);
-
-            leftSpeed = smoothSpeed(lastLeftSpeed, leftSpeed,20);
-            rightSpeed = smoothSpeed(lastRightSpeed, rightSpeed,20);
-
-            lastLeftSpeed = leftSpeed;
-            lastRightSpeed = rightSpeed;
-
-            synchronized (MultiSensorRobot.motorLock) {
-                MultiSensorRobot.leftMotor.setSpeed(leftSpeed);
-                MultiSensorRobot.rightMotor.setSpeed(rightSpeed);
-
-                MultiSensorRobot.leftMotor.forward();
-                MultiSensorRobot.rightMotor.forward();
-            }
-
-            displayCounter++;
-            if (displayCounter >= 10) {
-                LCD.clear(1);
-                LCD.clear(2);
-                LCD.drawString("L:" + leftSpeed + " R:" + rightSpeed, 0, 1);
-                LCD.drawString("Dev:" + deviation, 0, 2);
-                displayCounter = 0;
-            }
-
-            Delay.msDelay(30);
-        }
-    }
-}
+            
