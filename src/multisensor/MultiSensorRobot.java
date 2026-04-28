@@ -37,7 +37,7 @@ public class MultiSensorRobot {
         }
 
         // Shutdown sensors and motors
-        LightSensor.shutdown();
+         LightSensor.shutdown();
         UltrasonicSensor.close();
         leftMotor.close();
         rightMotor.close();
