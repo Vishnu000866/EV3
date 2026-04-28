@@ -6,6 +6,7 @@ import lejos.utility.Delay;
 
 public class LineFollower implements Runnable {
 
+    
     private int limit(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
     }
