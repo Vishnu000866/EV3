@@ -71,3 +71,16 @@ public class LineFollower implements Runnable {
                 MultiSensorRobot.leftMotor.forward();
                 MultiSensorRobot.rightMotor.forward();
             }
+              displayCounter++;
+            if (displayCounter >= 10) {
+                LCD.clear(1);
+                LCD.clear(2);
+                LCD.drawString("L:" + leftSpeed + " R:" + rightSpeed, 0, 1);
+                LCD.drawString("Dev:" + deviation, 0, 2);
+                displayCounter = 0;
+            }
+
+            Delay.msDelay(30);
+        }
+    }
+}
