@@ -31,10 +31,10 @@ public class MultiSensorRobot {
             Delay.msDelay(100); // Wait for a short time
         }
         // Stop the motors safely
-        synchronized (motorLock) {
+       synchronized (motorLock) {
             leftMotor.stop();
             rightMotor.stop();
-     }
+        }
 
         // Shutdown sensors and motors
         LightSensor.shutdown();
