@@ -34,7 +34,7 @@ public class MultiSensorRobot {
         synchronized (motorLock) {
             leftMotor.stop();
             rightMotor.stop();
-        }
+     }
 
         // Shutdown sensors and motors
         LightSensor.shutdown();
